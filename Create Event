@@ -1,0 +1,17 @@
+/// @description Set up Camera
+//sets the original setting to fullscreen
+window_set_fullscreen(true);
+//sets the camera to the first viewport
+cam = view_camera[0];
+//sets the instance it follows to the player object
+follow = obj_Elsa;
+//variables holding half of the width and height
+view_w_half = camera_get_view_width(cam) / 2;
+view_h_half = camera_get_view_height(cam) / 2;
+//handles where the camera goes
+xTo = xstart;
+yTo = ystart;
+
+//creates different layers for parallax backgrounds
+mountainLayer = layer_get_id("Mountains");
+cloudLayer = layer_get_id("Clouds");
