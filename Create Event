@@ -1,0 +1,44 @@
+//with the nearest enemy (the one it collided with)
+with(instance_nearest(x,y,obj_Enemy))
+{
+	//if the enemy is not dead
+	if (state != ENEMYSTATE.DEAD)
+	{
+		//add direction to variable for blood spurt direction
+		following.hitFromDir = other.direction;
+		//subtract hp
+		hp -= 1;
+		//if still alive
+		if (hp > 0)
+		{
+			//with blood spurt object
+			with (following)
+			{
+				//create particle effects for blood
+				part_type_direction(blood, hitFromDir-15, hitFromDir+15, 0, 0);
+				part_particles_create_color(enemySystem,x + random_range(-5,5),y + random_range(-5,5),blood,c_white,(100-other.hp));
+			}
+			//8 frames for flashing blue
+			flash = 8;
+			//30 frames stunned (1 second)
+			hitStun = 30;
+			//take care of being hit
+			state = ENEMYSTATE.HIT;
+			//start running
+			hsp = 1;
+			//begin decay of the projectile
+			other.image_speed = 1;
+		}
+		else
+		{
+			//create dead body
+			//body flies in direction that enemy is hit from
+			hsp = lengthdir_x(3,other.direction);
+			//always goes up
+			vsp = -5;
+			y -= 1;
+			//handles dead actions
+			state = ENEMYSTATE.DEAD;
+		}
+	}
+}
