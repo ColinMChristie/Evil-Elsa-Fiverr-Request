@@ -1,0 +1,41 @@
+function Collisions(){
+	//add list of things objects can collide with
+	var collidable = array_create(1);
+	collidable[0] = obj_Wall;
+	
+	//for each object in the list of collidables.
+	for (var i = 0; i < array_length_1d(collidable); i++)
+	{
+		//horizontal collision
+		if (place_meeting(x+hsp,y,collidable[i]))
+		{
+			while (!place_meeting(x+sign(hsp),y,collidable[i]))
+			{
+				x = x + sign(hsp);
+			}
+			//if the player hits a wall
+			if (me == obj_Elsa)
+				//stop
+				hsp = 0;
+			//if the enemy hits a wall
+			else if (me == obj_Enemy)
+			{
+				//reverse
+				hsp = -hsp;
+			}
+		}
+
+		//Vertical collision
+		if (place_meeting(x,y+vsp,collidable[i]))
+		{
+			while (!place_meeting(x,y+sign(vsp),collidable[i]))
+			{
+				y = y + sign(vsp);
+			}
+			vsp = 0;
+		}
+	}
+	
+	x = x + hsp;
+	y = y + vsp;
+}
