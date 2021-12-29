@@ -1,0 +1,26 @@
+function EnemyState_Hit(){
+	//if stunned for longer than a frame
+	if (hitStun > 0)
+	{
+		//lower the stun timer by one frame
+		hitStun--;
+		//stunned sprite
+		image_index = 1;
+		//with all enemies
+		with (obj_Enemy)
+		{
+			//if they are idle
+			if (state == ENEMYSTATE.FREE)
+			{
+				//flee for their lives
+				state = ENEMYSTATE.RUN;
+				hsp = 1;
+			}
+		}
+	}
+	else
+	{
+		//if no longer stunned, flee
+		state = ENEMYSTATE.RUN;
+	}
+}
