@@ -1,0 +1,1 @@
+variable name: snowman --- default: true --- type: boolean
