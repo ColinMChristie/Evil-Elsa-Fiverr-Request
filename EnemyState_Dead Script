@@ -1,0 +1,45 @@
+function EnemyState_Dead(){
+	
+	//if this object has not yet hit the ground dead..
+	if (done == 0)
+	{
+		//falling sprite
+		image_index = 2;
+		//enables gravity
+		vsp = vsp + grv;
+
+		//horizontal collision
+		if (place_meeting(x+hsp,y,obj_Wall))
+		{
+			while (!place_meeting(x+sign(hsp),y,obj_Wall))
+			{
+				x = x + sign(hsp);
+			}
+			hsp = 0;
+		}
+		x = x + hsp;
+
+		//Vertical collision
+		if (place_meeting(x,y+vsp,obj_Wall))
+		{
+			//if this object hits the ground
+			if (vsp > 0) 
+			{
+				//variable keeping if it hits the ground
+				done = 1;
+			}
+			while (!place_meeting(x,y+sign(vsp),obj_Wall))
+			{
+				y = y + sign(vsp);
+			}
+			vsp = 0;
+		}
+		y = y + vsp;
+		
+	}
+	else
+	{
+		//dead sprite
+		image_index = 3;
+	}
+}
