@@ -1,0 +1,20 @@
+//set the player controls for the keyboard
+if (hasControl)
+{
+	key_left = keyboard_check(ord("A"));
+	key_right = keyboard_check(ord("D"));
+	key_up = keyboard_check(ord("W"));
+}
+//if the player does not have control, remove control
+else
+{
+	key_left = 0;
+	key_right = 0;
+	key_up = 0;
+}
+
+//handles which script is run per frame
+switch (state)
+{
+	case PLAYERSTATE.FREE: PlayerState_Free(); break;
+}
