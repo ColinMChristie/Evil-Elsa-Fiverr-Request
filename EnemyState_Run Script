@@ -1,0 +1,19 @@
+function EnemyState_Run(){
+	//enables gravity
+	vsp = vsp + grv;
+	//chooses run sprite
+	image_index = 4;
+	
+	//changes direction based on movement
+	if (hsp > 0)
+	{
+		image_xscale = 1;
+	}
+	else if (hsp < 0)
+	{
+		image_xscale = -1;
+	}
+	
+	//enables collisions
+	Collisions();
+}
