@@ -1,0 +1,37 @@
+function PlayerState_Free(){
+	//controls left and right movement
+	var moveXnow = key_right - key_left;
+
+	//walking speed of 6
+	hsp = moveXnow * 6;
+	
+	//enables gravity
+	vsp = vsp + grv;
+	
+	//if youre on the ground, jump
+	if (place_meeting(x,y+1,obj_Wall) and (key_up))
+	{
+		vsp = -7;
+	}
+	
+	//collision detection
+	Collisions();
+	
+	//changes direction of sprite based on direction of movement
+	if (abs(hsp) > 0)
+	{
+		image_xscale = sign(hsp);
+	}
+	
+	//shoot ice
+	if (mouse_check_button(mb_left))
+	{
+		with (instance_create_layer(x +(image_xscale*15),y,"Projectiles",obj_IceShard))
+		{
+			direction = point_direction(x,y,mouse_x,mouse_y);
+			image_angle = direction;
+			speed = 15;
+			
+		}
+	}
+}
