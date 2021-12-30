@@ -1,0 +1,20 @@
+//horizontal speed
+hsp = 0;
+//vertical speed
+vsp = 0;
+//gravity
+grv = 0.25;
+//if the player has control
+hasControl = true;
+
+//variable holding this instance's name
+me = obj_Elsa;
+
+//handles the state machine
+state = PLAYERSTATE.FREE;
+
+//creates all of the states
+enum PLAYERSTATE
+{
+	FREE
+}
