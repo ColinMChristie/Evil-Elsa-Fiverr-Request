@@ -1,0 +1,44 @@
+/// @description Update Camera
+
+//update destination
+if (instance_exists(follow))
+{
+	xTo = follow.x;
+	yTo = follow.y;
+}
+
+//Update object position
+//if following the player
+if (follow == obj_Elsa)
+{
+	//smoothly follow the object
+	x += (xTo - x) / 25;
+	y += (yTo - y) / 25;
+}
+
+//do not go out of bounds of the room height and width.
+x = clamp(x,view_w_half,room_width-view_w_half);
+y = clamp(y,view_h_half,room_height-view_h_half);
+
+
+//Update camera view
+camera_set_view_pos(cam,x - view_w_half,y - view_h_half);
+
+//make sure the parallax backgrounds have the illusion of being far away.
+if (mountainLayer)
+	layer_x("Mountains",x/1.25);
+if (cloudLayer)
+	layer_x("Clouds",x/1.25);
+
+//toggles on and off fullscreen with the escape key
+if (keyboard_check_pressed(vk_escape))
+{
+	if (window_get_fullscreen())
+	{
+		window_set_fullscreen(false);
+	}
+	else
+	{
+		window_set_fullscreen(true);
+	}
+}
