@@ -1,0 +1,2 @@
+//draws the text for the tutorial at the start
+draw_text_color(x,y,"Use WASD to move and mouse to let it go\nPress \"esc\" to exit fullscreen and \"R\" to restart the game",c_black,c_black,c_black,c_black,1);
