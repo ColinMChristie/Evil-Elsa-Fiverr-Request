@@ -1,0 +1,15 @@
+//draws its sprite at x,y
+draw_self();
+
+//if flashing blue
+if (flash > 0)
+{
+	//subtract from flash duration
+	flash--;
+	//set shader over our sprite
+	shader_set(shd_Ice);
+	//then draw this sprite
+	draw_self();
+	//reset the shader
+	shader_reset();
+}

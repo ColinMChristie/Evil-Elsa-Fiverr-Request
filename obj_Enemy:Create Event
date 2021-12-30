@@ -1,0 +1,48 @@
+//variable handling which direction the projectiles are facing when this instance is hit
+hitFromDir = 0;
+//hit points
+hp = 100;
+//horizontal speed
+hsp = 0;
+//vertical speed
+vsp = 0;
+//gravity
+grv = 0.25;
+
+//variable holding instance name
+me = obj_Enemy;
+
+//variable for flashing blue
+flash = 0;
+//variable for hitting the ground while dead
+done = 0;
+//variable for stun duration
+hitStun = 0;
+
+//does not animate
+image_speed = 0;
+
+//creates a blood spurt object that follows this instance
+following = instance_create_layer(x,y,"Above",obj_BloodEmitter);
+with (following)
+{
+	follow = other.id;
+}
+
+//changes to snowman from Anna sprite
+if (snowman)
+{
+	sprite_index = spr_Snowman;
+}
+
+//handles state machine
+state = ENEMYSTATE.FREE;
+
+//creates all states
+enum ENEMYSTATE
+{
+	FREE,
+	HIT,
+	RUN,
+	DEAD
+}

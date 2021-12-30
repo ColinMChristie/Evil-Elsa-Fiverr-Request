@@ -1,0 +1,8 @@
+//handles which script to run every frame based on the state
+switch (state)
+{
+	case ENEMYSTATE.FREE: EnemyState_Free(); break;
+	case ENEMYSTATE.HIT: EnemyState_Hit(); break;
+	case ENEMYSTATE.RUN: EnemyState_Run(); break;
+	case ENEMYSTATE.DEAD: EnemyState_Dead(); break;
+}
