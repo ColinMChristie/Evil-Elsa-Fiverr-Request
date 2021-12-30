@@ -1,0 +1,21 @@
+//which object this instance follows.
+follow = undefined;
+//direction to spurt blood
+hitFromDir = 0;
+
+//create the particle system
+enemySystem = part_system_create();
+//create the particle type
+blood = part_type_create();
+//set the settings of the particle
+part_type_sprite(blood, spr_Blood, false, false, true);
+part_type_life(blood, 100,120);
+part_type_scale(blood, .5, 1.5);
+part_type_size(blood, 0.5, 2, -0.01, 0);
+part_type_orientation(blood, 0, 359, 0, 0, true);
+part_type_color1(blood, c_white);
+part_type_blend(blood, false);
+part_type_direction(blood, hitFromDir-80, hitFromDir+80, 0, 0);
+part_type_speed(blood, 1, 5, -0.05, 0);
+part_type_gravity(blood,0.05,270);
+part_type_alpha2(blood,1,0);
