@@ -1,0 +1,3 @@
+//follow the instance its supposed to follow
+x = follow.x;
+y = follow.y;
