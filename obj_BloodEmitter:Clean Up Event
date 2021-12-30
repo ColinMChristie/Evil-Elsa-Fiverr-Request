@@ -1,3 +1,0 @@
-//delete systems manually when out of scope
-part_system_destroy(enemySystem);
-part_type_destroy(blood);
